@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   lang: "zh-CN",
-  title: "ChartStudio Wiki",
+  title: "谱面工坊 文档站",
   description: "ChartStudio Wiki",
   cleanUrls: true,
   lastUpdated: true,
@@ -21,10 +21,16 @@ export default defineConfig({
           { text: "项目介绍", link: "/guide/getting-started" },
           { text: "文档协作", link: "/guide/contributing" }
         ]
+      },
+      {
+        text: "格式说明",
+        items: [
+          { text: "ChartStudio 谱面元数据结构", link: "/format/metadata-structure" }
+        ]
       }
     ],
     socialLinks: [
-      { icon: "github", link: "https://github.com/" }
+      { icon: "github", link: "https://github.com/Tenqui-Noir/chartstudio-docs" }
     ],
     footer: {
       message: '谱面工坊 文档站 · <a href="https://github.com/Tenqui-Noir/chartstudio-docs" target="_blank" rel="noreferrer">GitHub</a>',
