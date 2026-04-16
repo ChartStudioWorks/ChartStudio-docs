@@ -1,0 +1,84 @@
+:root {
+  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-2: #115e59;
+  --vp-c-brand-3: #134e4a;
+  --vp-c-brand-soft: rgba(15, 118, 110, 0.16);
+  --chartstudio-home-overlay:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 1)),
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(217, 119, 6, 0.08));
+  --chartstudio-feature-border: rgba(15, 23, 42, 0.08);
+  --chartstudio-feature-bg: rgba(255, 255, 255, 0.82);
+  --chartstudio-nav-bg: rgba(248, 250, 252, 0.72);
+  --chartstudio-nav-border: rgba(15, 23, 42, 0.08);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #0f766e 10%, #d97706 90%);
+  --vp-home-hero-image-background-image:
+    radial-gradient(circle at 30% 30%, rgba(15, 118, 110, 0.28), transparent 42%),
+    radial-gradient(circle at 70% 45%, rgba(217, 119, 6, 0.26), transparent 36%);
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+.dark {
+  --vp-c-brand-1: #2dd4bf;
+  --vp-c-brand-2: #14b8a6;
+  --vp-c-brand-3: #0f766e;
+  --vp-c-brand-soft: rgba(45, 212, 191, 0.18);
+  --chartstudio-home-overlay:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.94), rgba(2, 6, 23, 0.98)),
+    linear-gradient(135deg, rgba(20, 184, 166, 0.12), rgba(245, 158, 11, 0.1));
+  --chartstudio-feature-border: rgba(148, 163, 184, 0.18);
+  --chartstudio-feature-bg: rgba(15, 23, 42, 0.72);
+  --chartstudio-nav-bg: rgba(2, 6, 23, 0.62);
+  --chartstudio-nav-border: rgba(148, 163, 184, 0.14);
+  --vp-home-hero-name-background: linear-gradient(135deg, #5eead4 10%, #fbbf24 90%);
+  --vp-home-hero-image-background-image:
+    radial-gradient(circle at 30% 30%, rgba(45, 212, 191, 0.3), transparent 42%),
+    radial-gradient(circle at 70% 45%, rgba(251, 191, 36, 0.22), transparent 36%);
+}
+
+.VPHome {
+  background: var(--chartstudio-home-overlay);
+  padding-bottom: 120px;
+}
+
+.VPFeature {
+  border: 1px solid var(--chartstudio-feature-border);
+  border-radius: 20px;
+  background: var(--chartstudio-feature-bg);
+  backdrop-filter: blur(10px);
+}
+
+.VPNavBar .title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.VPNavBar,
+.VPNavBar.has-sidebar,
+.VPNavBar.home {
+  background: var(--chartstudio-nav-bg) !important;
+  border-bottom: 1px solid var(--chartstudio-nav-border);
+  backdrop-filter: blur(16px);
+}
+
+.VPNavBar .content,
+.VPNavBar .content-body,
+.VPNavBar .curtain,
+.VPNavBar .screen,
+.VPNavBar.has-sidebar .content,
+.VPNavBar.has-sidebar .content-body {
+  background: transparent !important;
+}
+
+.VPNavBar .divider,
+.VPNavBarDivider {
+  display: none;
+}
+
+.VPFooter {
+  border-top: none !important;
+}
+
+.VPFooter .container {
+  text-align: left;
+}
