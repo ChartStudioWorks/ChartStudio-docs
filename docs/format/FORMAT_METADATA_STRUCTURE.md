@@ -7,29 +7,29 @@
 元数据用于描述一首曲目的基础信息、资源文件、时间信息和谱面列表。  
 谱面工坊在进行导入工作时，会自动将谱面转为谱面工坊的工程文件，导出时也将转为相应谱面格式。
 
-## 谱面包示例结构
+## 谱面包示例结构<Badge type="warning" text="草案" />
 
 ```jsonc
 {
-  "metadataFormatVersion": 1,   //内部格式版本号
+  "metadataFormatVersion": 1,   // 内部格式版本号
   "title": "歌曲名",
   "artist": "曲师",
   "charter": "谱师",
   "preview": {
-    "start": 114,               //歌曲预览开始时间(ms)
-    "end": 514                  //歌曲预览结束时间(ms)
+    "start": 114,               // 歌曲预览开始时间(ms)
+    "end": 514                  // 歌曲预览结束时间(ms)
   },
   "song": {
-    "bpm": 170,                 //歌曲bpm
-    "startTime": 155,           //谱面起始参考时间(ms)
-    "offset": 230               //谱面偏移(+)(ms)
+    "bpm": 170,                 // 歌曲bpm
+    "startTime": 155,           // 谱面起始参考时间(ms)
+    "offset": 230               // 谱面偏移(+)(ms)
   },
-  "assets": {                   //文件资源
+  "assets": {                   // 文件资源
     "audio": "音频文件.mp3",
     "background": "背景.jpg",
     "cover": "封面.jpg"
   },
-  "charts": {                   //谱面信息
+  "charts": {                   // 谱面信息
     "master": 15,
     "legend": 20
   }
@@ -51,39 +51,39 @@
 
 ```jsonc
 {
-  "chartFormatVersion": 1,      //内部格式版本号
-  "bpm": 170,                   //基础bpm值
-  "bpmChanges": [               //bpm变化表
+  "chartFormatVersion": 1,      // 内部格式版本号
+  "bpm": 170,                   // 基础bpm值
+  "bpmChanges": [               // bpm变化表
     {
-    "beat": 0,                  //节拍数
-    "bpm": 170                  //bpm值
+    "beat": 0,                  // 节拍数
+    "bpm": 170                  // bpm值
     },
     {
     "beat": 64,
     "bpm": 200
     }
   ],
-  "scroll": [                   //变速表
+  "scroll": [                   // 变速表
     {
-    "beat": 32,                 //节拍数
-    "value": 0.5                //速度变化(与初始速度1相对)
+    "beat": 32,                 // 节拍数
+    "value": 0.5                // 速度变化(与初始速度1相对)
     },
     {
     "beat": 64,
     "value": 1.25
     }
   ],
-  "notes": [                    //音符数据
+  "notes": [                    // 音符数据
     {
-    "type": "tap",              //note 类型
-    "lane": 3,                  //轨道编号
-    "beat": 0.25                //所在节拍数
+    "type": "tap",              // note 类型
+    "lane": 3,                  // 轨道编号
+    "beat": 0.25                // 所在节拍数
     },
     {
-    "type": "hold",             //note 类型
-    "lane": 5,                  //轨道编号
-    "beat": 1,                  //所在节拍数
-    "endBeat": 2                //结束节拍数 
+    "type": "hold",             // note 类型
+    "lane": 5,                  // 轨道编号
+    "beat": 1,                  // 所在节拍数
+    "endBeat": 2                // 结束节拍数 
     }
   ]
 }
