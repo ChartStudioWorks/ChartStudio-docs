@@ -10,11 +10,11 @@ hero:
     alt: ChartStudio Logo
   actions:
     - theme: brand
-      text: 开始学习
+      text: 开始使用
       link: /guide/getting-started
     - theme: alt
       text: 项目细节
-      link: /guide/contributing
+      link: /format/FORMAT_METADATA_STRUCTURE
 
 features:
   - title: 使用教学
