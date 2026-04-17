@@ -9,9 +9,12 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.svg",
     siteTitle: "ChartStudio Wiki",
+    lastUpdated: {
+      text: "最后更新"
+    },
     nav: [
       { text: "首页", link: "/" },
-      { text: "快速开始", link: "/guide/getting-started" },
+      { text: "格式说明", link: "/format/FORMAT_METADATA_STRUCTURE.md" },
       { text: "规范", link: "/guide/contributing" }
     ],
     sidebar: [
@@ -25,7 +28,14 @@ export default defineConfig({
       {
         text: "格式说明",
         items: [
-          { text: "ChartStudio 谱面元数据结构", link: "/format/metadata-structure" }
+          { text: "ChartStudio 谱面元数据结构", link: "/format/FORMAT_METADATA_STRUCTURE.md" }
+        ]
+      },
+      {
+        text: "导入规则",
+        items: [
+          { text: "谱面导入规则", link: "/import/IMPORT_FORMAT_RULES.md" },
+          { text: "字段映射规则", link: "/import/IMPORT_MAPPING_RULES.md" },
         ]
       }
     ],
