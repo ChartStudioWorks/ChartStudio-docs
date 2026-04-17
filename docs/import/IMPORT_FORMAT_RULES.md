@@ -32,6 +32,7 @@
     "creator": "谱师名",
     "background": "background.jpg",
     "version": "Lv.15",                   // 谱面名称
+    "preview": 233,                       // 预览起始时间
     "id": 0,
     "mode": 0,                            // 当前样本中为 0，对应下落式 Key 模式
     "time": 1742122599,                   // 最后修改时间(戳)
