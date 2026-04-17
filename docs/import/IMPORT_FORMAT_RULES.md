@@ -6,7 +6,7 @@
 ::: tip 提示
 本文并不是字段映射规则文档。
 
-若您在找关于谱面工坊如何将第三方格式转为谱面工坊格式，请查阅[字段映射规则](/import/IMPORT_MAPPING_RULES.md)
+若您在找关于谱面工坊如何将第三方格式转为谱面工坊格式，请查阅[字段映射规则](https://chartstudio.tenqui.site/import/IMPORT_MAPPING_RULES.md)
 :::
 
 ::: warning 注意
