@@ -116,26 +116,28 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 
 ## DCS 元数据映射
 
-`title`
+`title` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "name": "曲名"
 }
 ```
-`artist`
+
+`artist` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "autor": "曲师"
 }
 ```
-`bpm`
+
+`bpm` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "bpm": 236
 }
 ```
-`offset`
 
+`offset` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "firstTime": 230
@@ -145,7 +147,8 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 ## 谱面数据映射
 
 ### Malody 谱面映射规则
-`bpm`
+`bpm` <Badge type="tip" text="ChartStudio" />
+
 ```json
 {
   "time": [
@@ -157,7 +160,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`bpmChanges`
+`bpmChanges` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "time": [
@@ -169,7 +172,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`scroll`
+`scroll` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "effect": [
@@ -181,7 +184,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`notes`
+`notes` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "note": [
