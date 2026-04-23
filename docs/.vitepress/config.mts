@@ -10,7 +10,7 @@ export default defineConfig({
     logo: "/logo.svg",
     siteTitle: "ChartStudio Wiki",
     lastUpdated: {
-      text: "最后更新"
+      text: "最后更新于"
     },
     nav: [
       { text: "首页", link: "/" },
