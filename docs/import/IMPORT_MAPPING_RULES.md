@@ -10,7 +10,7 @@
 
 ## Malody 元数据映射
 
-`title` <Badge type="tip" text="ChartStudio" />
+`title` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -20,7 +20,7 @@
   }
 }
 ```
-`artist` <Badge type="tip" text="ChartStudio" />
+`artist` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -31,7 +31,7 @@
 }
 ```
 
-`charter` <Badge type="tip" text="ChartStudio" />
+`charter` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -40,7 +40,7 @@
 }
 ```
 
-`preview.start` <Badge type="tip" text="ChartStudio" />
+`preview.start` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -49,7 +49,7 @@
 }
 ```
 
-`song.offset` <Badge type="tip" text="ChartStudio" />
+`song.offset` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -67,7 +67,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 因此，谱面工坊将读取 `[0, 0, 1]` 下的 bpm 作为默认 bpm 值。
 :::
 
-`song.bpm` <Badge type="tip" text="ChartStudio" />
+`song.bpm` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "time": [
@@ -79,7 +79,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`assets.background` <Badge type="tip" text="ChartStudio" />
+`assets.background` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -94,7 +94,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 
 实验性功能。
 :::
-`song.offset` <Badge type="tip" text="ChartStudio" /> <Badge type="warning" text="实验性" />
+`song.offset` <Badge type="info" text="ChartStudio" /> <Badge type="warning" text="实验性" />
 ```json
 {
   "note": {
@@ -109,41 +109,41 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 
 ### Malody 映射补充
 
-- `assets.audio`
-- `assets.cover`
+- `assets.audio` <Badge type="info" text="ChartStudio" />
+- `assets.cover` <Badge type="info" text="ChartStudio" />
 
 以上字段将自动识别文件夹内音频文件与封面文件。
 
 若出现多个音频文件/封面文件，谱面工坊将弹窗让用户主动选择指定文件。
 
-- `version` 
+- `version`  <Badge type="tip" text="Malody" />
 
 若匹配 `lv(.)+数字`，将其映射为难度等级。
 
 ## DCS 元数据映射
 
-`title` <Badge type="tip" text="ChartStudio" />
+`title` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "name": "曲名"
 }
 ```
 
-`artist` <Badge type="tip" text="ChartStudio" />
+`artist` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "autor": "曲师"
 }
 ```
 
-`bpm` <Badge type="tip" text="ChartStudio" />
+`bpm` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "bpm": 236
 }
 ```
 
-`offset` <Badge type="tip" text="ChartStudio" />
+`offset` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "firstTime": 230
@@ -151,7 +151,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 ```
 
 ## Malody 谱面字段映射
-`bpm` <Badge type="tip" text="ChartStudio" />
+`bpm` <Badge type="info" text="ChartStudio" />
 
 ```json
 {
@@ -164,7 +164,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`bpmChanges` <Badge type="tip" text="ChartStudio" />
+`bpmChanges` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "time": [
@@ -176,7 +176,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`scroll` <Badge type="tip" text="ChartStudio" />
+`scroll` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "effect": [
@@ -188,7 +188,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`notes` <Badge type="tip" text="ChartStudio" />
+`notes` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "note": [
@@ -206,14 +206,14 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 
 ## DCS 谱面字段映射
 
-`bpm` <Badge type="tip" text="ChartStudio" />
+`bpm` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "bpm": 236
 }
 ```
 
-`bpmChanges` <Badge type="tip" text="ChartStudio" />
+`bpmChanges` <Badge type="info" text="ChartStudio" />
 ```json
 {
   "bpmList": {
@@ -222,12 +222,12 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`scroll` <Badge type="tip" text="ChartStudio" />
+`scroll` <Badge type="info" text="ChartStudio" />
 ```txt
 26.5,0.9
 ```
 
-`notes` <Badge type="tip" text="ChartStudio" />
+`notes` <Badge type="info" text="ChartStudio" />
 ```txt
 1-0.5
 6-24-24.5
