@@ -28,7 +28,8 @@ export default defineConfig({
       {
         text: "格式说明",
         items: [
-          { text: "ChartStudio 谱面元数据结构", link: "/format/FORMAT_METADATA_STRUCTURE.md" }
+          { text: "ChartStudio 谱面元数据结构", link: "/format/FORMAT_METADATA_STRUCTURE.md" },
+          { text: "第三方谱面格式解析", link: "/format/FORMAT_ANALYZE"}
         ]
       },
       {
