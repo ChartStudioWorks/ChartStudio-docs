@@ -24,3 +24,7 @@ features:
   - title: 格式说明
     details: 解释 .mc、musicInfo.json、txt 以及内部工程格式的字段含义与对应关系。
 ---
+
+::: danger 危险
+此网站尚处于 初步开发 阶段，任何文章都有随时更改的可能。
+:::
