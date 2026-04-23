@@ -21,7 +21,9 @@
   },
   "song": {
     "bpm": 170,                 // 歌曲bpm
+    "startTime": 155,           // 歌曲起始时间(ms)
     "offset": 230               // 音频偏移(+)(ms)
+    
   },
   "assets": {                   // 文件资源
     "audio": "音频文件.mp3",
@@ -46,7 +48,7 @@
 `startTime` 表示谱面起始参考时间。  
 `offset` 表示在该基础上的额外偏移量，正值表示向后偏移。
 
-## 谱面示例结构
+## 谱面示例结构 <Badge type="warning" text="草案" />
 
 ```jsonc
 {
