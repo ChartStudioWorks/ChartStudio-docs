@@ -1,6 +1,12 @@
 # 字段映射规则
 
-本文用以说明谱面工坊如何导入并处理其他编辑器的格式。若您遇到谱面文件无法导入等问题，可参照本章进行问题排查。
+本文用以说明谱面工坊如何导入/导出并处理其他编辑器的格式。若您遇到谱面工坊的相关报错信息，可参照本章进行问题排查。
+
+::: tip 提示
+由于 `startTime` 在谱面中并没有稳定来源，它将默认为0。
+
+同样的，导出时，`startTime` 将被合并到 `offset` 中。
+:::
 
 ## Malody 元数据映射
 
@@ -73,7 +79,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-`asset.background` <Badge type="tip" text="ChartStudio" />
+`assets.background` <Badge type="tip" text="ChartStudio" />
 ```json
 {
   "meta": {
@@ -103,8 +109,8 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 
 ### Malody 映射补充
 
-- `asset.audio`
-- `asset.cover`
+- `assets.audio`
+- `assets.cover`
 
 以上字段将自动识别文件夹内音频文件与封面文件。
 
@@ -144,9 +150,7 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-## 谱面数据映射
-
-### Malody 谱面映射规则
+## Malody 谱面字段映射
 `bpm` <Badge type="tip" text="ChartStudio" />
 
 ```json
@@ -196,4 +200,39 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-### 谱面映射说明
+### Malody 谱面映射说明
+
+由于 Malody 谱面并没有基础 bpm 的概念，故 `bpm` 字段将使用 `time` 下 `[0, 0, 1]` 所对应的值作为基础bpm。
+
+## DCS 谱面字段映射
+
+`bpm` <Badge type="tip" text="ChartStudio" />
+```json
+{
+  "bpm": 236
+}
+```
+
+`bpmChanges` <Badge type="tip" text="ChartStudio" />
+```json
+{
+  "bpmList": {
+    "0": 236
+  }
+}
+```
+
+`scroll` <Badge type="tip" text="ChartStudio" />
+```txt
+26.5,0.9
+```
+
+`notes` <Badge type="tip" text="ChartStudio" />
+```txt
+1-0.5
+6-24-24.5
+```
+
+### DCS 谱面映射说明
+
+`notes` 将被映射为谱面工坊的"类型"，"轨道编号"，"节拍数" 的形式。
