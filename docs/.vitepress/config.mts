@@ -44,8 +44,8 @@ export default defineConfig({
       { icon: "github", link: "https://github.com/Tenqui-Noir/chartstudio-docs" }
     ],
     footer: {
-      message: '谱面工坊 文档站 · <a href="https://github.com/Tenqui-Noir/chartstudio-docs" target="_blank" rel="noreferrer">GitHub</a>',
-      copyright: '© 2026 尘柒，保留所有权利。'
+      message: '谱面工坊 文档站',
+      copyright: '© 2026 尘柒，保留所有权利'
     },
     search: {
       provider: "local"

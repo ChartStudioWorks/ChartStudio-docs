@@ -36,9 +36,14 @@
     radial-gradient(circle at 70% 45%, rgba(251, 191, 36, 0.22), transparent 36%);
 }
 
-.VPHome {
+.Layout:has(.VPContent.is-home) {
   background: var(--chartstudio-home-overlay);
-  padding-bottom: 120px;
+}
+
+.VPHome {
+  background: transparent;
+  margin-bottom: 0 !important;
+  padding-bottom: 0;
 }
 
 .VPFeature {
@@ -77,8 +82,21 @@
 
 .VPFooter {
   border-top: none !important;
+  padding: 24px 24px 28px !important;
+  background: transparent !important;
 }
 
 .VPFooter .container {
-  text-align: left;
+  max-width: 1152px !important;
+  text-align: left !important;
+}
+
+.VPFooter .message,
+.VPFooter .copyright {
+  line-height: 1.6;
+  text-align: left !important;
+}
+
+.VPFooter .copyright {
+  margin-top: 2px;
 }
