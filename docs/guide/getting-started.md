@@ -4,29 +4,12 @@
 
 这个站点用于 谱面工坊 / ChartStudio 的 教程 与 Wiki。
 
-## 当前目录建议
+## 介绍
 
-```text
-docs/
-  index.md
-  guide/
-    getting-started.md
-    contributing.md
-  .vitepress/
-    config.mts
-    theme/
-```
+谱面工坊 / ChartStudio 是一个网页版制谱器。
 
-## 推荐的后续模块
+由于现有制谱器不能很好满足需求，于是我做了个新的网页端制谱器。
 
-- `product/`：产品背景、需求说明、流程设计
-- `engineering/`：开发规范、架构说明、部署文档
-- `components/`：图表能力、组件说明、API 示例
-- `changelog/`：版本记录与里程碑
+它主要面向舞立方的制谱工作。
 
-## 本地运行
-
-```bash
-npm install
-npm run docs:dev
-```
+目前仍在早期开发摸索阶段，所以还不能正常使用。
