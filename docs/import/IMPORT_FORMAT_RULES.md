@@ -71,6 +71,7 @@
 
 - `.mc` 必须是合法 JSON
 - `meta.mode` 必须为 `0`
+- 仅可缺少[非必须字段](/format/FORMAT_METADATA_STRUCTURE#允许为空的字段)
 
 ## DCS 导入逻辑（模式二）
 

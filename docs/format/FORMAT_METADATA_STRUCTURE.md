@@ -39,6 +39,15 @@
 
 ### 格式补充说明
 
+#### 允许为空的字段：
+- `artist`
+- `charter`
+- `preview`
+- `background`
+- `cover`
+- `startTime`
+- `offset`
+
 #### 时间单位
 
 除 `beat` 外，本文中所有时间值均使用毫秒（ms）表示。
