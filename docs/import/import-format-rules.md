@@ -6,7 +6,7 @@
 ::: tip 提示
 本文**并不是**字段映射规则文档。
 
-若您在找关于谱面工坊如何将第三方格式转为谱面工坊格式，请查阅[字段映射规则](/import/IMPORT_MAPPING_RULES.md)
+若您在找关于谱面工坊如何将第三方格式转为谱面工坊格式，请查阅[字段映射规则](/import/import-mapping-rules.md)
 :::
 
 ## 通用
@@ -71,18 +71,20 @@
 
 - `.mc` 必须是合法 JSON
 - `meta.mode` 必须为 `0`
-- 仅可缺少[非必须字段](/format/FORMAT_METADATA_STRUCTURE#允许为空的字段)
+- 仅可缺少[非必须字段](/format/format-metadata-structure#允许为空的字段)
 
 ## DCS 导入逻辑（模式二）
 
 ### 核心文件
 
 - `musicInfo.json`
-- `^[ABCDE]\\d+\\.txt$`
-- `^[ABCDE]\d+_sv\.txt$`
+- `^[ABCDE]0\d+\.txt$`
+- `^[ABCDE]0\d+_sv\.txt$`
 - `audio.wav`
 - `bg.jpg`
 - `bigBg.jpg`
+
+谱面文件名由难度识别字母、固定的 `0` 和难度级别组成，例如 6 级为 `A06.txt`、17 级为 `A017.txt`、114 级为 `A0114.txt`。变速文件使用相同名称并加 `_sv` 后缀。
 
 #### 文件识别与映射
 

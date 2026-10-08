@@ -3,7 +3,7 @@
 ::: tip 提示
 本文**并不是**谱面导入规则文档。
 
-若您在找关于谱面工坊如何识别第三方谱面信息，请查阅[谱面导入规则](/import/IMPORT_FORMAT_RULES.md)
+若您在找关于谱面工坊如何识别第三方谱面信息，请查阅[谱面导入规则](/import/import-format-rules.md)
 :::
 
 ::: warning 注意

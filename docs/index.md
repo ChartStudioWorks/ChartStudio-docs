@@ -14,7 +14,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: 项目细节
-      link: /format/FORMAT_METADATA_STRUCTURE
+      link: /format/format-metadata-structure
 
 features:
   - title: 使用教学
