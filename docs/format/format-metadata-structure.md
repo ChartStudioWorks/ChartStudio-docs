@@ -99,6 +99,22 @@
 }
 
 ```
+
+### 轨道与多押
+
+CSC 包内的 `.chart` 谱面文件使用 JSON 格式。`notes` 中的每个 Note 只对应一个轨道，`lane` 必须是 `1～6` 的整数：从舞立方左上按键开始，按逆时针方向递进编号。
+
+双押和三押不是单独的 Note 类型，而是多个 Note 具有相同的起始 `beat`。例如，下面两个 Tap 表示同一拍的双押：
+
+```json
+[
+  { "type": "tap", "lane": 1, "beat": 0.5 },
+  { "type": "tap", "lane": 3, "beat": 0.5 }
+]
+```
+
+CSC 内部不使用 DCS 的 `13`、`23` 等组合轨道编码；组合编码在格式转换时展开为多个单轨 Note。DCS 与 CSC 音符的转换规则见[字段映射规则](/import/import-mapping-rules#dcs-csc-音符展开)。
+
 ### 格式补充说明
 
 #### tap
