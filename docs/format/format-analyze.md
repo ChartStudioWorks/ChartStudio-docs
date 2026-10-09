@@ -38,7 +38,7 @@
 
   "time": [                               // BPM 表
     {
-      "beat": [0, 0, 1],                  // [整数拍, 分子, 分母]
+      "beat": [0, 0, 1],                  // [小节索引, 分子, 分母]
       "bpm": 170.0
     }
   ],
@@ -82,11 +82,28 @@
 }
 ```
 
-### 补充说明
+### 节拍三元组
 
-`beat` 使用 `[整数拍, 分子, 分母]` 表示，换算为 `整数拍 + 分子 / 分母`。
+在已通过编辑器实测验证的 4/4 Key 谱面中，`beat` 使用 `[bar, numerator, denominator]`，表示从 `0` 开始的小节索引及小节内的分数位置。换算到 CSC 的四分音符拍坐标时使用：
 
-带有 `"endbeat"` 的 `note` 为长条
+```text
+CSC beat = (bar + numerator / denominator) × 4
+```
+
+| Malody 三元组 | CSC `beat` |
+| --- | --- |
+| `[0, 0, 4]` | `0` |
+| `[0, 1, 4]` | `1` |
+| `[0, 2, 4]` | `2` |
+| `[0, 3, 4]` | `3` |
+| `[1, 0, 4]` | `4` |
+| `[0, 1, 32]` | `0.125` |
+
+Tap 的 `beat`、Hold 的 `beat` 与 `endbeat`、BPM 的 `time[].beat`、Scroll 的 `effect[].beat` 使用同一种坐标表示。带有 `endbeat` 的可击打音符为 Hold。
+
+::: warning 拍号验证边界
+上述乘以 `4` 的换算仅在 4/4 谱面中得到实测验证。当前 ChartStudio 不识别并换算独立拍号信息，非 4/4 时间轴尚未验证，不能据此保证其他拍号的转换结果。导入校验与精度说明见[Malody 时间事件与错误处理](/import/import-mapping-rules#malody-时间事件与错误处理)。
+:::
 
 ### `meta.song` 曲目字段
 
@@ -108,7 +125,7 @@ Malody Key 模式的 `note` 是数组，其中可以同时出现可击打音符�
       "beat": [0, 0, 1],
       "sound": "audio.ogg",
       "vol": 100,
-      "offset": 349,
+      "offset": 259,
       "type": 1
     }
   ]
@@ -125,10 +142,16 @@ Malody Key 模式的 `note` 是数组，其中可以同时出现可击打音符�
 
 当前确认的 BGM 事件不是可击打的 Tap 或 Hold，不能直接映射到 CSC 的 `notes`。
 
+普通轨道音符也可能带有 `sound`，表示 Keysound 关联；不能只凭 `sound` 字段将其归为 BGM。当前导入分类与 Keysound 支持范围见[Malody 音频资源与 Offset](/import/import-mapping-rules#malody-音频资源与-offset)。
+
+::: info BGM Offset 实测
+用户在 Malody 编辑器保存并试听后确认：把第 0 拍 BGM `offset` 从 `259` 改为 `1259` 毫秒，音乐延后播放 `1000` 毫秒。此正值方向与 CSC 一致，映射时不取反，也不转换单位。负数的游戏内播放行为尚未单独实测；程序的兼容处理见[Malody Offset 映射](/import/import-mapping-rules#malody-offset-映射)。
+:::
+
 ### 有限样本观察
 
 ::: info 样本范围
-在本次检查的 32 个压缩包中，31 个包含 Malody `.mc`，合计 41 张 `.mc`；41 张均观察到 BGM `sound` 事件，其中 34 张的 BGM 事件带有 `offset`，7 张没有。19 张包含 `meta.song.file`；在同时包含 `meta.song.file` 和 BGM `sound` 的样本中，文件名均一致。41 张 `.mc` 均未发现 `meta.song.offset`。
+此前检查的一批 32 个压缩包中，31 个包含 Malody `.mc`，合计 41 张 `.mc`；41 张均观察到 BGM `sound` 事件，其中 34 张的 BGM 事件带有 `offset`，7 张没有。19 张包含 `meta.song.file`；在同时包含 `meta.song.file` 和 BGM `sound` 的样本中，文件名均一致。41 张 `.mc` 均未发现 `meta.song.offset`。
 
 以上仅描述这批有限样本，不代表所有 Malody 文件或版本的格式保证。
 :::
@@ -142,15 +165,25 @@ Malody Key 模式的 `note` 是数组，其中可以同时出现可击打音符�
     "uuid": "3de894700cc245c4a1bb404071080915",
     "name": "曲名",
     "autor": "曲师",
-    "bpm": 236,               // 默认bpm
-    "firstTime": 0.22,        // 谱面偏移 / 歌曲起始时间(s)
-    "bpmList": {              // bpm变化表，此值允许为空
+    "bpm": 236,               // 基础 BPM
+    "firstTime": 0.22,        // 曲目偏移，单位秒
+    "bpmList": {              // BPM 事件表，{} 表示空表
         "0": 236
     },
     "c_time": "2026/4/11 14:29:48",     // 创建时间
     "e_time": "2026/4/11 14:29:48"      // 编辑时间
 }
 ```
+
+| 字段 | 用途 |
+| --- | --- |
+| `name`、`autor` | 曲名与曲师；`autor` 是原始格式中的实际拼写。 |
+| `bpm` | 基础 BPM。 |
+| `bpmList` | 以节拍坐标为键、BPM 为值的事件表；零拍值可以与基础 BPM 不同。 |
+| `firstTime` | 秒单位的时间偏移，不是节拍数。 |
+| `uuid`、`c_time`、`e_time` | 样本中的其他元信息，ChartStudio 当前不映射这些字段。 |
+
+ChartStudio 对必需键及 `firstTime` 的校验见[DCS 导入限制](/import/import-format-rules#dcs-限制)，与 CSC 的单位换算见[DCS 时间字段映射](/import/import-mapping-rules#dcs-时间字段映射)。
 
 ### 谱面文件示例结构
 ```txt
@@ -200,3 +233,5 @@ Malody Key 模式的 `note` 是数组，其中可以同时出现可击打音符�
 ### 变速文件
 
 以 `26.5,0.9` 为例，该字段即代表“在`26.5`拍时，将流速调整为正常值的`0.9`倍”。
+
+每个 `_sv.txt` 属于对应名称的难度谱面，记录使用 `beat,value`。`beat` 是节拍坐标，`value` 是倍率；已知样本中 `0` 倍率会保留。ChartStudio 的校验、重复节拍与导出顺序见[DCS Scroll 映射](/import/import-mapping-rules#dcs-scroll-映射)，负值及重复事件在 DCS 中的游戏内解释尚未验证。

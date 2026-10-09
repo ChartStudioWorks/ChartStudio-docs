@@ -90,6 +90,10 @@ export default defineConfig({
             text: "导出为 .csc",
             link: "/export/export-csc",
           },
+          {
+            text: "导出为 DCS 谱面",
+            link: "/export/export-dcs",
+          },
         ],
       },
     ],
