@@ -49,16 +49,39 @@
 }
 ```
 
-`song.offset` <Badge type="info" text="ChartStudio" />
+### Malody 音频资源与 Offset
+
+| 字段 | 用途或映射关系 |
+|---|---|
+| `meta.song.file` | 可选的歌曲音频文件引用；可能缺失，缺少它不代表谱面没有音频。 |
+| BGM `note[].sound` | BGM 事件引用的音频文件。 |
+| BGM `note[].offset` | BGM 事件的音频偏移，单位为毫秒；样本中并非必需。它是当前确认的 Malody Offset 来源。 |
+| `meta.preview` | 预览起始时间，对应 CSC `preview.start`，不是 Offset。 |
+| CSC `assets.audio` | 导入后关联的歌曲音频资源。 |
+| CSC `song.offset` | ChartStudio 统一的偏移字段；字段本身保留，但当前 Malody 导入尚未将 BGM Offset 写入此字段。 |
+
+当前样本中，`meta.song.file` 和 BGM `sound` 可以同时存在；观察到两者文件名一致，但这不代表所有 Malody 文件都如此。样本范围和统计见[第三方格式解析中的有限样本观察](/format/format-analyze#有限样本观察)。
+
+示例：
+
 ```json
 {
-  "meta": {
-    "song": {
-      "offset" : 230
+  "note": [
+    {
+      "beat": [0, 0, 1],
+      "sound": "audio.ogg",
+      "offset": 349,
+      "type": 1
     }
-  }
+  ]
 }
 ```
+
+::: warning 当前导入实现状态
+当前工作区的 Malody Key 模式导入实现会识别 `type: 1`、包含 `sound` 且不含 `column` 的 BGM 事件，并将其排除在 CSC `notes` 之外。音频引用不一致时，当前实现优先采用 BGM `sound` 并给出告警；没有 BGM 引用时才尝试使用 `meta.song.file`，之后再按文件名或可用音频回退。这描述的是当前工作区实现，不是 Malody 格式对所有编辑器的优先级规定。
+
+实现检测到 BGM `offset` 时会提示其正负方向尚未可靠确认，并让 CSC `song.offset` 保持 `null`。因此，格式来源已识别，但 Malody Offset 到 CSC 的符号转换和写入尚未完成或验证。
+:::
 
 ### Malody BPM 数据映射
 ::: info 关于 Malody 的 BPM 字段说明
@@ -88,33 +111,12 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-::: warning 警告
-
-该字段出现时机尚不明确。
-
-实验性功能。
-:::
-`song.offset` <Badge type="info" text="ChartStudio" /> <Badge type="warning" text="实验性" />
-```json
-{
-  "note": {
-    "beat": [0, 0, 1],
-    "sound": "audio.ogg",
-    "vol": 100,
-    "offset": 349,
-    "type": 1
-  }
-}
-```
-
 ### Malody 映射补充
 
 - `assets.audio` <Badge type="info" text="ChartStudio" />
 - `assets.cover` <Badge type="info" text="ChartStudio" />
 
-以上字段将自动识别文件夹内音频文件与封面文件。
-
-若出现多个音频文件/封面文件，谱面工坊将弹窗让用户主动选择指定文件。
+以上字段记录导入后关联的音频和封面资源。当前实现会自动选择资源，不会弹出人工选择窗口；音频的选择行为见上方说明。
 
 - `version`  <Badge type="tip" text="Malody" />
 
@@ -204,10 +206,6 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 }
 ```
 
-### Malody 谱面映射说明
-
-由于 Malody 谱面并没有基础 bpm 的概念，故 `bpm` 字段将使用 `time` 下 `[0, 0, 1]` 所对应的值作为基础bpm。
-
 ## DCS 谱面字段映射
 
 `bpm` <Badge type="info" text="ChartStudio" />
@@ -239,7 +237,9 @@ Malody 将 BPM 放在了 `time` 下，以 `[0, 0, 1]` 作为默认/起始BPM。
 
 ### DCS → CSC 音符展开
 
-DCS 记录中的单个轨道数字对应一个 CSC Note。两位轨道编码表示两个轨道，导入时展开为两个独立的 Note；不能将两位编码作为一个 `lane` 值。CSC 的轨道编号范围和多押表示方式见[CSC 轨道与多押规范](/format/format-metadata-structure#轨道与多押)。
+DCS 记录中的单个轨道数字对应一个 CSC Note。两位轨道编码表示两个轨道，导入时展开为两个独立的 Note；不能将两位编码作为一个 `lane` 值。
+
+CSC 的轨道编号范围和多押表示方式见 ChartStudio 的格式说明: [CSC 轨道与多押规范](/format/format-metadata-structure#轨道与多押)。
 
 `13-0.5` 转换为两个 Tap：
 
