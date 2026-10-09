@@ -6,12 +6,15 @@ export default defineConfig({
   description: "ChartStudio Wiki",
   cleanUrls: true,
   lastUpdated: true,
+
   themeConfig: {
     logo: "/logo.svg",
     siteTitle: "ChartStudio Wiki",
+
     lastUpdated: {
       text: "最后更新于",
     },
+
     nav: [
       {
         text: "首页",
@@ -19,14 +22,16 @@ export default defineConfig({
       },
       {
         text: "格式说明",
-        link: "/format/format-metadata-structure.md",
+        link: "/format/format-metadata-structure",
       },
       {
         text: "规范",
         link: "/guide/contributing",
       },
     ],
+
     sidebar: [
+      // 开始使用
       {
         text: "开始使用",
         items: [
@@ -40,80 +45,105 @@ export default defineConfig({
           },
         ],
       },
+
+      // 文件解析
       {
-        text: "结构解析",
+        text: "文件解析",
+        collapsed: false,
         items: [
           {
-            text: "Malody 谱面包",
-            link: "/structure/malody",
+            text: "结构解析",
+            collapsed: true,
+            items: [
+              {
+                text: "Malody 谱面包",
+                link: "/structure/malody",
+              },
+              {
+                text: "DCS 谱面包",
+                link: "/structure/dcs",
+              },
+              {
+                text: "ChartStudio 谱面包",
+                link: "/structure/chartstudio",
+              },
+            ],
           },
           {
-            text: "DCS 谱面包",
-            link: "/structure/dcs",
-          },
-          {
-            text: "ChartStudio 谱面包",
-            link: "/structure/chartstudio",
+            text: "格式说明",
+            collapsed: true,
+            items: [
+              {
+                text: "ChartStudio 谱面元数据结构",
+                link: "/format/format-metadata-structure",
+              },
+              {
+                text: "第三方谱面格式解析",
+                link: "/format/format-analyze",
+              },
+            ],
           },
         ],
       },
+
+      // 谱面处理
       {
-        text: "格式说明",
+        text: "谱面处理",
+        collapsed: false,
         items: [
           {
-            text: "ChartStudio 谱面元数据结构",
-            link: "/format/format-metadata-structure.md",
+            text: "导入规则",
+            collapsed: true,
+            items: [
+              {
+                text: "谱面导入规则",
+                link: "/import/import-format-rules",
+              },
+              {
+                text: "字段映射规则",
+                link: "/import/import-mapping-rules",
+              },
+            ],
           },
           {
-            text: "第三方谱面格式解析",
-            link: "/format/format-analyze",
-          },
-        ],
-      },
-      {
-        text: "导入规则",
-        items: [
-          {
-            text: "谱面导入规则",
-            link: "/import/import-format-rules.md",
-          },
-          {
-            text: "字段映射规则",
-            link: "/import/import-mapping-rules.md",
-          },
-        ],
-      },
-      {
-        text: "导出规则",
-        items: [
-          {
-            text: "导出为 .csc",
-            link: "/export/export-csc",
-          },
-          {
-            text: "导出为 DCS 谱面",
-            link: "/export/export-dcs",
+            text: "导出规则",
+            collapsed: true,
+            items: [
+              {
+                text: "导出为 .csc",
+                link: "/export/export-csc",
+              },
+              {
+                text: "导出为 DCS 谱面",
+                link: "/export/export-dcs",
+              },
+            ],
           },
         ],
       },
     ],
+
     socialLinks: [
       {
         icon: "github",
         link: "https://github.com/Tenqui-Noir/chartstudio-docs",
       },
     ],
+
     footer: {
       message: "谱面工坊 文档站",
       copyright: "© 2026 尘柒，保留所有权利",
     },
+
     search: {
       provider: "local",
     },
+
     outline: {
       level: [2, 3],
       label: "本页目录",
     },
+
     docFooter: {
       prev: "上一页",
       next: "下一页",
